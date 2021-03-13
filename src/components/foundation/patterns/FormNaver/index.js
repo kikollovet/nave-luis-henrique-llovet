@@ -28,29 +28,93 @@ const ButtonForm = styled(Button)`
   width: 176px;
 `;
 
-function FormContent() {
+// eslint-disable-next-line react/prop-types
+function FormContent({ token }) {
+  const [naverInfo, setNaverInfo] = React.useState({
+    name: '',
+    job_role: '',
+    birthdate: '',
+    admission_date: '',
+    project: '',
+    url: '',
+  });
+
+  // const [errorLogin, setErrorLogin] = React.useState();
+  // const [processingLogin, setProcessingLogin] = React.useState();
+
+  function handleChange(event) {
+    const fieldName = event.target.getAttribute('name');
+    setNaverInfo({
+      ...naverInfo,
+      [fieldName]: event.target.value,
+    });
+  }
   return (
-    <form>
+    <form
+      onSubmit={(event) => {
+        event.preventDefault();
+        // Data Transfer Object
+        // setProcessingLogin('Processing.......');
+        const naverDTO = {
+          job_role: naverInfo.job_role,
+          admission_date: naverInfo.admission_date,
+          project: naverInfo.project,
+          name: naverInfo.name,
+          url: naverInfo.url,
+          birthdate: naverInfo.birthdate,
+        };
+
+        fetch('https://navedex-api.herokuapp.com/v1/navers',
+          {
+            method: 'POST',
+            headers: {
+              // Accept: '*/*',
+              // 'Accept-Encoding': 'gzip, deflate, br',
+              // Connection: 'keep-alive',
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify(naverDTO),
+          })
+          .then((respostaDoServidor) => {
+            if (respostaDoServidor.ok) {
+              return respostaDoServidor.json();
+            }
+
+            throw new Error('Não foi possível cadastrar o usuário agora :(');
+          })
+          // eslint-disable-next-line no-unused-vars
+          .then((respostaConvertidaEmObjeto) => {
+            // console.log(respostaConvertidaEmObjeto);
+          })
+          // eslint-disable-next-line no-unused-vars
+          .catch((error) => {
+            // console.log(error);
+            // console.log(token);
+            // console.log(naverDTO);
+          });
+      }}
+    >
       <InputGroup2>
         <StyledInputGroup>
           <InputGroup
             label="Nome"
             type="text"
-            name="email"
-            placeholder="E-mail"
-            onChange=""
-            value=""
+            name="name"
+            placeholder="Nome"
+            onChange={handleChange}
+            value={naverInfo.name}
             width="280px"
           />
         </StyledInputGroup>
         <StyledInputGroup>
           <InputGroup
-            label="Senha"
-            type="password"
-            name="password"
-            placeholder="Senha"
-            onChange=""
-            value=""
+            label="Cargo"
+            type="text"
+            name="job_role"
+            placeholder="Cargo"
+            onChange={handleChange}
+            value={naverInfo.job_role}
             width="280px"
           />
         </StyledInputGroup>
@@ -58,23 +122,23 @@ function FormContent() {
       <InputGroup2>
         <StyledInputGroup>
           <InputGroup
-            label="E-mail"
+            label="Idade"
             type="text"
-            name="email"
-            placeholder="E-mail"
-            onChange=""
-            value=""
+            name="birthdate"
+            placeholder="DD/MM/AAAA"
+            onChange={handleChange}
+            value={naverInfo.birthdate}
             width="280px"
           />
         </StyledInputGroup>
         <StyledInputGroup>
           <InputGroup
-            label="Senha"
-            type="password"
-            name="password"
-            placeholder="Senha"
-            onChange=""
-            value=""
+            label="Tempo de empresa"
+            type="text"
+            name="admission_date"
+            placeholder="DD/MM/AAAA"
+            onChange={handleChange}
+            value={naverInfo.admission_date}
             width="280px"
           />
         </StyledInputGroup>
@@ -82,23 +146,23 @@ function FormContent() {
       <InputGroup2>
         <StyledInputGroup>
           <InputGroup
-            label="E-mail"
+            label="Projetos que participou"
             type="text"
-            name="email"
-            placeholder="E-mail"
-            onChange=""
-            value=""
+            name="project"
+            placeholder="Projetos que participou"
+            onChange={handleChange}
+            value={naverInfo.project}
             width="280px"
           />
         </StyledInputGroup>
         <StyledInputGroup>
           <InputGroup
-            label="Senha"
-            type="password"
-            name="password"
-            placeholder="Senha"
-            onChange=""
-            value=""
+            label="URL da foto do naver"
+            type="text"
+            name="url"
+            placeholder="URL da foto do naver"
+            onChange={handleChange}
+            value={naverInfo.url}
             width="280px"
           />
         </StyledInputGroup>
@@ -110,7 +174,8 @@ function FormContent() {
   );
 }
 
-export default function FormNaver() {
+// eslint-disable-next-line react/prop-types
+export default function FormNaver({ token }) {
   return (
     <Box
       display="flex"
@@ -126,7 +191,7 @@ export default function FormNaver() {
       paddingRight="32px"
       paddingLeft="32px"
     >
-      <FormContent style={{ width: '100%', height: '100%' }} />
+      <FormContent token={token} style={{ width: '100%', height: '100%' }} />
     </Box>
   );
 }
