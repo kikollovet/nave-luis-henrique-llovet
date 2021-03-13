@@ -2,18 +2,50 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { withIronSession } from 'next-iron-session';
+import { Box } from '../../src/components/foundation/layout/Box';
+import NavBar from '../../src/components/commons/NavBar';
+import Naver from '../../src/components/commons/Naver';
+import NaversBar from '../../src/components/commons/NaversBar';
 
 export default function NaversPage(props) {
   return (
-    <div>
-      {props.user.id}
-      {props.user.email}
-      {props.user.token}
-      {' '}
-      {props.navers[0].name}
-      {' '}
-      {props.navers[1].name}
-    </div>
+    // <div>
+    //   {props.user.id}
+    //   {props.user.email}
+    //   {props.user.token}
+    //   {' '}
+    //   {props.navers[0].name}
+    //   {' '}
+    //   {props.navers[1].name}
+    // </div>
+    <Box
+      display="flex"
+      flexDirection="column"
+      justifyContent="space-between"
+      alignItems="center"
+      backgroundColor="white"
+      width="100%"
+      height="100%"
+    >
+      <NavBar />
+      <Box
+        display="flex"
+        flexDirection="row"
+        justifyContent="center"
+        alignItems="center"
+        flexWrap="wrap"
+        backgroundColor="white"
+        width="100%"
+        height="100%"
+        margin="20px"
+      >
+        <NaversBar />
+        {props.navers && props.navers.map((naver) => (
+          <Naver imgSrc={naver.url} naverName={naver.name} jobRole={naver.job_role} />
+        ))}
+        ,
+      </Box>
+    </Box>
   );
 }
 

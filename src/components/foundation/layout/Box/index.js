@@ -18,4 +18,5 @@ export const Box = styled.div`
     ${propToStyle('paddingBottom')}
     ${propToStyle('paddingLeft')}
     ${propToStyle('paddingRight')}
+    ${propToStyle('margin')}
 `;
