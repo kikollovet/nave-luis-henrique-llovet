@@ -67,6 +67,7 @@ export default function NaversPage(props) {
         <NaversBar />
         {props.navers && props.navers.map((naver) => (
           <Naver
+            key={naver.url}
             imgSrc={naver.url}
             naverName={naver.name}
             jobRole={naver.job_role}
@@ -75,8 +76,8 @@ export default function NaversPage(props) {
                 imgSrc: naver.url,
                 naverName: naver.name,
                 jobRole: naver.job_role,
-                birthdate: naver.birthdate,
-                admissionDate: naver.admission_date,
+                birthdate: naver.birthdate.split('T', 1),
+                admissionDate: naver.admission_date.split('T', 1),
                 project: naver.project,
               });
               setModalState(!isModalOpen);
