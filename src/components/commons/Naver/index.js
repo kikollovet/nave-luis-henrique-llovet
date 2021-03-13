@@ -47,9 +47,12 @@ const Button = styled.button`
 `;
 
 // eslint-disable-next-line react/prop-types
-export default function NavBar({ imgSrc, naverName, jobRole }) {
+export default function NavBar({
+  // eslint-disable-next-line react/prop-types
+  imgSrc, naverName, jobRole, onClick,
+}) {
   return (
-    <NaverWrapper>
+    <NaverWrapper onClick={onClick}>
       <img src={imgSrc} width="281px" height="280px" alt="naver" />
       <NaverName>{naverName}</NaverName>
       <NaverJob>{jobRole}</NaverJob>
