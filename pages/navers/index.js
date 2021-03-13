@@ -73,6 +73,7 @@ export default function NaversPage(props) {
             jobRole={naver.job_role}
             onClick={() => {
               setDataModalDetail({
+                id: naver.id,
                 imgSrc: naver.url,
                 naverName: naver.name,
                 jobRole: naver.job_role,
