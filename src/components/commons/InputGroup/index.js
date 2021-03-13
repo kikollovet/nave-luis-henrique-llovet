@@ -11,7 +11,7 @@ const InputGroupDiv = styled.div`
 `;
 
 export default function InputGroup({
-  label, type, name, placeholder, onChange, value,
+  label, type, name, placeholder, onChange, value, width,
 }) {
   return (
     <InputGroupDiv>
@@ -22,6 +22,7 @@ export default function InputGroup({
         placeholder={placeholder}
         onChange={onChange}
         value={value}
+        style={{ width }}
       />
     </InputGroupDiv>
   );
@@ -34,4 +35,6 @@ InputGroup.propTypes = {
   placeholder: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/require-default-props
+  width: PropTypes.string,
 };
