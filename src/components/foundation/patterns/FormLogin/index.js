@@ -80,7 +80,7 @@ function FormContent() {
                   }),
                 })
                 .then(() => {
-                  router.push('/navers?name=luis');
+                  router.push(`/navers?name=${respostaConvertidaEmObjeto.token}`);
                 });
             })
             .catch(() => {
