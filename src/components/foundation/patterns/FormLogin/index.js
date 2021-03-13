@@ -21,6 +21,7 @@ function FormContent() {
   });
 
   const [errorLogin, setErrorLogin] = React.useState();
+  const [processingLogin, setProcessingLogin] = React.useState();
 
   function handleChange(event) {
     const fieldName = event.target.getAttribute('name');
@@ -38,6 +39,7 @@ function FormContent() {
         onSubmit={(event) => {
           event.preventDefault();
           // Data Transfer Object
+          setProcessingLogin('Processing.......');
           const userDTO = {
             email: userInfo.email,
             password: userInfo.password,
@@ -83,6 +85,10 @@ function FormContent() {
             })
             .catch(() => {
               setErrorLogin('Ocorreu um problema');
+              setProcessingLogin();
+              setTimeout(() => {
+                setErrorLogin();
+              }, 5000);
             });
         }}
       >
@@ -103,6 +109,7 @@ function FormContent() {
           value={userInfo.password}
         />
         {errorLogin}
+        {processingLogin}
         <Button type="submit">Entrar</Button>
       </Form>
     </>

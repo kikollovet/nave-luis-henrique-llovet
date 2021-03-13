@@ -6,8 +6,12 @@ import { Box } from '../../src/components/foundation/layout/Box';
 import NavBar from '../../src/components/commons/NavBar';
 import Naver from '../../src/components/commons/Naver';
 import NaversBar from '../../src/components/commons/NaversBar';
+import Modal from '../../src/components/commons/Modal';
+import NaversDetail from '../../src/components/commons/NaversDetail';
 
 export default function NaversPage(props) {
+  const [isModalOpen, setModalState] = React.useState(false);
+  const [dataModalDetail, setDataModalDetail] = React.useState({});
   return (
     // <div>
     //   {props.user.id}
@@ -27,6 +31,27 @@ export default function NaversPage(props) {
       width="100%"
       height="100%"
     >
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => {
+          setModalState(false);
+        }}
+      >
+        {(propsDoModal) => (
+          <NaversDetail
+            onClose={() => {
+              setModalState(false);
+            }}
+            imgSrc={dataModalDetail.imgSrc}
+            naverName={dataModalDetail.naverName}
+            jobRole={dataModalDetail.jobRole}
+            birthdate={dataModalDetail.birthdate}
+            admissionDate={dataModalDetail.admissionDate}
+            project={dataModalDetail.project}
+            propsDoModal={propsDoModal}
+          />
+        )}
+      </Modal>
       <NavBar />
       <Box
         display="flex"
@@ -41,9 +66,35 @@ export default function NaversPage(props) {
       >
         <NaversBar />
         {props.navers && props.navers.map((naver) => (
-          <Naver imgSrc={naver.url} naverName={naver.name} jobRole={naver.job_role} />
+          <Naver
+            imgSrc={naver.url}
+            naverName={naver.name}
+            jobRole={naver.job_role}
+            onClick={() => {
+              setDataModalDetail({
+                imgSrc: naver.url,
+                naverName: naver.name,
+                jobRole: naver.job_role,
+                birthdate: naver.birthdate,
+                admissionDate: naver.admission_date,
+                project: naver.project,
+              });
+              setModalState(!isModalOpen);
+            }}
+          />
         ))}
         ,
+        {/* {props.navers && props.navers.map((naver) => (
+          <NaversDetail
+            imgSrc={naver.url}
+            naverName={naver.name}
+            jobRole={naver.job_role}
+            birthdate={naver.birthdate}
+            admissionDate={naver.admission_date}
+            project={naver.project}
+          />
+        ))}
+        , */}
       </Box>
     </Box>
   );
