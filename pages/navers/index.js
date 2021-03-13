@@ -1,6 +1,7 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
 import React from 'react';
+import { useRouter } from 'next/router';
 import { withIronSession } from 'next-iron-session';
 import { Box } from '../../src/components/foundation/layout/Box';
 import NavBar from '../../src/components/commons/NavBar';
@@ -12,6 +13,8 @@ import NaversDetail from '../../src/components/commons/NaversDetail';
 export default function NaversPage(props) {
   const [isModalOpen, setModalState] = React.useState(false);
   const [dataModalDetail, setDataModalDetail] = React.useState({});
+  const router = useRouter();
+  const dados = router.query;
   return (
     // <div>
     //   {props.user.id}
@@ -53,6 +56,7 @@ export default function NaversPage(props) {
         )}
       </Modal>
       <NavBar />
+      {dados.name}
       <Box
         display="flex"
         flexDirection="row"
