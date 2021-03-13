@@ -21,6 +21,7 @@ const NaverData = styled.div`
   width: 503px;
   height: 503px;
   background-color: white;
+  padding-left: 25px;
 `;
 
 // const SairButton = styled.button`
