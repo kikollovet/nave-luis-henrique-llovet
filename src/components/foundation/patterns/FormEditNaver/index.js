@@ -44,6 +44,8 @@ function FormContent({
     project,
     url,
   });
+  const [processando, setProcessando] = React.useState('');
+  const [erro, setErro] = React.useState('');
 
   // const [errorLogin, setErrorLogin] = React.useState();
   // const [processingLogin, setProcessingLogin] = React.useState();
@@ -60,7 +62,8 @@ function FormContent({
       onSubmit={(event) => {
         event.preventDefault();
         // Data Transfer Object
-        // setProcessingLogin('Processing.......');
+        setErro('');
+        setProcessando('Processando.......');
         const naverDTO = {
           job_role: naverInfo.job_role,
           admission_date: naverInfo.admission_date,
@@ -96,6 +99,8 @@ function FormContent({
           })
           // eslint-disable-next-line no-unused-vars
           .catch((error) => {
+            setProcessando('');
+            setErro('Algo deu errado');
             // console.log(error);
             // console.log(token);
             // console.log(naverDTO);
@@ -174,6 +179,8 @@ function FormContent({
           />
         </StyledInputGroup>
       </InputGroup2>
+      {processando}
+      {erro}
       <ButtonWrap>
         <ButtonForm type="submit">Salvar</ButtonForm>
       </ButtonWrap>

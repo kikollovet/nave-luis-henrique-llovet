@@ -27,6 +27,7 @@ export default function Home(props) {
         isOpen={isModalOpen}
         onClose={() => {
           setModalState(false);
+          router.push('/navers');
         }}
       >
         {(propsDoModal) => (
@@ -35,6 +36,7 @@ export default function Home(props) {
             smallText="Naver atualizado com sucesso!"
             onClose={() => {
               setModalState(false);
+              router.push('/navers');
             }}
             propsDoModal={propsDoModal}
           />

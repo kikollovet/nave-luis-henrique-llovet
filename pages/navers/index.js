@@ -14,7 +14,7 @@ import Excluir from '../../src/components/commons/Excluir';
 import SuccessWindow from '../../src/components/commons/SuccessWindow';
 
 export default function NaversPage(props) {
-  const [isModalOpen, setModalState] = React.useState(false);
+  const [isModalDetailOpen, setModalDetailState] = React.useState(false);
   const [isModalDeleteOpen, setModalDeleteState] = React.useState(false);
   const [isModalDeleteConfOpen, setModalDeleteConfState] = React.useState(false);
   const [dataModalDetail, setDataModalDetail] = React.useState({});
@@ -88,7 +88,6 @@ export default function NaversPage(props) {
                   if (respostaDoServidor.ok) {
                     return respostaDoServidor.json();
                   }
-                  console.log(respostaDoServidor);
                   throw new Error('Não foi possível cadastrar o usuário agora :(');
                 })
               // eslint-disable-next-line no-unused-vars
@@ -110,15 +109,15 @@ export default function NaversPage(props) {
         )}
       </Modal>
       <Modal
-        isOpen={isModalOpen}
+        isOpen={isModalDetailOpen}
         onClose={() => {
-          setModalState(false);
+          setModalDetailState(false);
         }}
       >
         {(propsDoModal) => (
           <NaversDetail
             onClose={() => {
-              setModalState(false);
+              setModalDetailState(false);
             }}
             imgSrc={dataModalDetail.imgSrc}
             naverName={dataModalDetail.naverName}
@@ -129,6 +128,10 @@ export default function NaversPage(props) {
             propsDoModal={propsDoModal}
             editClick={() => {
               router.push(`/edit?id=${dataModalDetail.id}&url=${dataModalDetail.imgSrc}&name=${dataModalDetail.naverName}&job_role=${dataModalDetail.jobRole}&birthdate=${dataModalDetail.birthdate}&admission_date=${dataModalDetail.admissionDate}&project=${dataModalDetail.project}`);
+            }}
+            trashClick={() => {
+              setModalDetailState(false);
+              setModalDeleteState(true);
             }}
           />
         )}
@@ -171,7 +174,7 @@ export default function NaversPage(props) {
                 admissionDate: naver.admission_date,
                 project: naver.project,
               });
-              setModalState(!isModalOpen);
+              setModalDetailState(!isModalDetailOpen);
             }}
           />
         ))}
