@@ -1,3 +1,10 @@
+# Endereço do projeto na rede
+
+https://nave-luis-henrique-prado-llovet-git-main-kikollovet.vercel.app/
+
+email: luish@teste.com
+senha: testeteste
+
 # Sobre o desenvolvimento do app
 
 Conheci o React e o Next.js na Imersão React - Next.js 2a ediçao da Alura em Janeiro. Atualmente estou fazendo o Bootcamp JAM Stack da Alura onde estou aprofundando meus conhecimentos em React e no framework Next.js além de aprender muitas boas práticas.. Estou no módulo 3 de 6 módulos.
