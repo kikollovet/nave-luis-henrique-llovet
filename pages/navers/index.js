@@ -142,6 +142,15 @@ export const getServerSideProps = withIronSession(
         return response;
       });
     }
+
+    if (!user) {
+      return {
+        redirect: {
+          destination: '/',
+          permanent: false,
+        },
+      };
+    }
     // navers = navers.map((naver) => {
     //   const birthdate = naver.birthdate.split('T', 1);
     //   naver.birthdate = birthdate;
@@ -174,14 +183,6 @@ export const getServerSideProps = withIronSession(
     // });
     // eslint-disable-next-line no-console
     // console.log(user);
-    if (!user) {
-      return {
-        redirect: {
-          destination: '/',
-          permanent: false,
-        },
-      };
-    }
 
     return {
       props: { user, navers },

@@ -33,7 +33,7 @@ const ButtonForm = styled(Button)`
 // eslint-disable-next-line react/prop-types
 // eslint-disable-next-line camelcase
 function FormContent({
-  token, name, job_role, birthdate, admission_date, project, url, id
+  token, name, job_role, birthdate, admission_date, project, url, id,
 }) {
   const [naverInfo, setNaverInfo] = React.useState({
     name,
@@ -181,7 +181,7 @@ function FormContent({
 
 // eslint-disable-next-line react/prop-types
 export default function FormEditNaver({
-  token, name, job_role, birthdate, admission_date, project, url, id
+  token, name, job_role, birthdate, admission_date, project, url, id,
 }) {
   return (
     <Box
@@ -214,6 +214,7 @@ export default function FormEditNaver({
 }
 
 FormContent.defaultProps = {
+  id: '',
   name: '',
   job_role: '',
   birthdate: '',
@@ -224,6 +225,7 @@ FormContent.defaultProps = {
 
 FormContent.propTypes = {
   token: PropTypes.string.isRequired,
+  id: PropTypes.string,
   name: PropTypes.string,
   job_role: PropTypes.string,
   birthdate: PropTypes.string,
@@ -233,6 +235,7 @@ FormContent.propTypes = {
 };
 
 FormEditNaver.defaultProps = {
+  id: '',
   name: '',
   job_role: '',
   birthdate: '',
@@ -243,6 +246,7 @@ FormEditNaver.defaultProps = {
 
 FormEditNaver.propTypes = {
   token: PropTypes.string.isRequired,
+  id: PropTypes.string,
   name: PropTypes.string,
   job_role: PropTypes.string,
   birthdate: PropTypes.string,
