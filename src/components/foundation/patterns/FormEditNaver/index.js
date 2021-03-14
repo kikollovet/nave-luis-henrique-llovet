@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { Box } from '../../layout/Box';
 import { Button } from '../../../commons/Button';
 import InputGroup from '../../../commons/InputGroup';
+import NavBar from '../../../commons/NavBar';
 
 const InputGroup2 = styled.div`
   display: flex;
@@ -33,7 +34,7 @@ const ButtonForm = styled(Button)`
 // eslint-disable-next-line react/prop-types
 // eslint-disable-next-line camelcase
 function FormContent({
-  token, name, job_role, birthdate, admission_date, project, url, id,
+  token, name, job_role, birthdate, admission_date, project, url, id, success,
 }) {
   const [naverInfo, setNaverInfo] = React.useState({
     name,
@@ -90,6 +91,7 @@ function FormContent({
           })
           // eslint-disable-next-line no-unused-vars
           .then((respostaConvertidaEmObjeto) => {
+            success();
             // console.log(respostaConvertidaEmObjeto);
           })
           // eslint-disable-next-line no-unused-vars
@@ -180,36 +182,48 @@ function FormContent({
 }
 
 // eslint-disable-next-line react/prop-types
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+`;
 export default function FormEditNaver({
-  token, name, job_role, birthdate, admission_date, project, url, id,
+  token, name, job_role, birthdate, admission_date, project, url, id, success,
 }) {
   return (
-    <Box
-      display="flex"
-      flexDirection="column"
+    <Wrapper>
+      <NavBar />
+      <Box
+        display="flex"
+        flexDirection="column"
       // justifyContent="a"
-      alignItems="flex-start"
-      alignSelf="center"
-      backgroundColor="white"
-      width="700px"
-      height="408px"
-      paddingTop="40px"
-      paddingBottom="40px"
-      paddingRight="32px"
-      paddingLeft="32px"
-    >
-      <FormContent
-        token={token}
-        name={name}
-        job_role={job_role}
-        birthdate={birthdate}
-        admission_date={admission_date}
-        project={project}
-        url={url}
-        id={id}
-        style={{ width: '100%', height: '100%' }}
-      />
-    </Box>
+        alignItems="flex-start"
+        alignSelf="center"
+        backgroundColor="white"
+        width="700px"
+        height="408px"
+        paddingTop="40px"
+        paddingBottom="40px"
+        paddingRight="32px"
+        paddingLeft="32px"
+      >
+        <FormContent
+          token={token}
+          name={name}
+          job_role={job_role}
+          birthdate={birthdate}
+          admission_date={admission_date}
+          project={project}
+          url={url}
+          id={id}
+          success={success}
+          style={{ width: '100%', height: '100%' }}
+        />
+      </Box>
+    </Wrapper>
   );
 }
 
@@ -221,6 +235,7 @@ FormContent.defaultProps = {
   admission_date: '',
   project: '',
   url: '',
+  success: () => {},
 };
 
 FormContent.propTypes = {
@@ -232,6 +247,7 @@ FormContent.propTypes = {
   admission_date: PropTypes.string,
   project: PropTypes.string,
   url: PropTypes.string,
+  success: PropTypes.func,
 };
 
 FormEditNaver.defaultProps = {
@@ -242,6 +258,7 @@ FormEditNaver.defaultProps = {
   admission_date: '',
   project: '',
   url: '',
+  success: () => {},
 };
 
 FormEditNaver.propTypes = {
@@ -253,4 +270,5 @@ FormEditNaver.propTypes = {
   admission_date: PropTypes.string,
   project: PropTypes.string,
   url: PropTypes.string,
+  success: PropTypes.func,
 };

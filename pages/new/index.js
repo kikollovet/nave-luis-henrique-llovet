@@ -5,8 +5,11 @@ import { withIronSession } from 'next-iron-session';
 // import styled from 'styled-components';
 import { Box } from '../../src/components/foundation/layout/Box';
 import FormNaver from '../../src/components/foundation/patterns/FormNaver';
+import Modal from '../../src/components/commons/Modal';
+import SuccessWindow from '../../src/components/commons/SuccessWindow';
 
 export default function Home(props) {
+  const [isModalOpen, setModalState] = React.useState(false);
   return (
     <Box
       display="flex"
@@ -17,7 +20,29 @@ export default function Home(props) {
       width="100%"
       height="100%"
     >
-      <FormNaver token={props.user.token} />
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => {
+          setModalState(false);
+        }}
+      >
+        {(propsDoModal) => (
+          <SuccessWindow
+            largeText="Naver criado"
+            smallText="Naver criado com sucesso!"
+            onClose={() => {
+              setModalState(false);
+            }}
+            propsDoModal={propsDoModal}
+          />
+        )}
+      </Modal>
+      <FormNaver
+        success={() => {
+          setModalState(true);
+        }}
+        token={props.user.token}
+      />
     </Box>
   );
 }

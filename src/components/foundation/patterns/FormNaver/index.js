@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { Box } from '../../layout/Box';
 import { Button } from '../../../commons/Button';
 import InputGroup from '../../../commons/InputGroup';
+import NavBar from '../../../commons/NavBar';
 
 const InputGroup2 = styled.div`
   display: flex;
@@ -33,7 +34,7 @@ const ButtonForm = styled(Button)`
 // eslint-disable-next-line react/prop-types
 // eslint-disable-next-line camelcase
 function FormContent({
-  token,
+  token, success,
 }) {
   const [naverInfo, setNaverInfo] = React.useState({
     name: '',
@@ -90,6 +91,7 @@ function FormContent({
           })
           // eslint-disable-next-line no-unused-vars
           .then((respostaConvertidaEmObjeto) => {
+            success();
             // console.log(respostaConvertidaEmObjeto);
           })
           // eslint-disable-next-line no-unused-vars
@@ -179,37 +181,58 @@ function FormContent({
   );
 }
 
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+`;
 // eslint-disable-next-line react/prop-types
 export default function FormNaver({
-  token,
+  token, success,
 }) {
   return (
-    <Box
-      display="flex"
-      flexDirection="column"
+    <Wrapper>
+      <NavBar />
+      <Box
+        display="flex"
+        flexDirection="column"
       // justifyContent="a"
-      alignItems="flex-start"
-      alignSelf="center"
-      backgroundColor="white"
-      width="700px"
-      height="408px"
-      paddingTop="40px"
-      paddingBottom="40px"
-      paddingRight="32px"
-      paddingLeft="32px"
-    >
-      <FormContent
-        token={token}
-        style={{ width: '100%', height: '100%' }}
-      />
-    </Box>
+        alignItems="flex-start"
+        alignSelf="center"
+        backgroundColor="white"
+        width="700px"
+        height="408px"
+        paddingTop="40px"
+        paddingBottom="40px"
+        paddingRight="32px"
+        paddingLeft="32px"
+      >
+        <FormContent
+          token={token}
+          style={{ width: '100%', height: '100%' }}
+          success={success}
+        />
+      </Box>
+    </Wrapper>
   );
 }
 
+FormContent.defaultProps = {
+  success: () => {},
+};
+
 FormContent.propTypes = {
   token: PropTypes.string.isRequired,
+  success: PropTypes.func,
+};
+
+FormNaver.defaultProps = {
+  success: () => {},
 };
 
 FormNaver.propTypes = {
   token: PropTypes.string.isRequired,
+  success: PropTypes.func,
 };

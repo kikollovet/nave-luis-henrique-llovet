@@ -6,8 +6,11 @@ import { withIronSession } from 'next-iron-session';
 // import styled from 'styled-components';
 import { Box } from '../../src/components/foundation/layout/Box';
 import FormEditNaver from '../../src/components/foundation/patterns/FormEditNaver';
+import Modal from '../../src/components/commons/Modal';
+import SuccessWindow from '../../src/components/commons/SuccessWindow';
 
 export default function Home(props) {
+  const [isModalOpen, setModalState] = React.useState(false);
   const router = useRouter();
   const dados = router.query;
   return (
@@ -20,7 +23,27 @@ export default function Home(props) {
       width="100%"
       height="100%"
     >
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => {
+          setModalState(false);
+        }}
+      >
+        {(propsDoModal) => (
+          <SuccessWindow
+            largeText="Naver atualizado"
+            smallText="Naver atualizado com sucesso!"
+            onClose={() => {
+              setModalState(false);
+            }}
+            propsDoModal={propsDoModal}
+          />
+        )}
+      </Modal>
       <FormEditNaver
+        success={() => {
+          setModalState(true);
+        }}
         token={props.user.token}
         name={dados.name}
         job_role={dados.job_role}
