@@ -190,6 +190,29 @@ const Wrapper = styled.div`
   width: 100%;
   height: 100%;
 `;
+
+const WrapperTitle = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+`;
+
+const BackButton = styled.a`
+  border: 0px;
+  background-color: white;
+  outline: none;
+  align-self: flex-end;
+  padding: 10px;
+`;
+
+const Text = styled.span`
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 36px;
+  margin-left: 20px;
+`;
 export default function FormEditNaver({
   token, name, job_role, birthdate, admission_date, project, url, id, success,
 }) {
@@ -210,6 +233,14 @@ export default function FormEditNaver({
         paddingRight="32px"
         paddingLeft="32px"
       >
+        <WrapperTitle>
+          <BackButton
+            href="/navers"
+          >
+            <img src="/arrow.png" width="12px" height="20px" alt="close icon" />
+          </BackButton>
+          <Text>Editar Naver</Text>
+        </WrapperTitle>
         <FormContent
           token={token}
           name={name}
