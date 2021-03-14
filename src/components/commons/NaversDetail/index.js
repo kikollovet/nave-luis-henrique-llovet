@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable import/prefer-default-export */
 import React from 'react';
@@ -83,7 +84,7 @@ const CloseButton = styled.button`
 // eslint-disable-next-line react/prop-types
 export default function NaversDetail({
   // eslint-disable-next-line react/prop-types
-  imgSrc, naverName, jobRole, birthdate, admissionDate, project, propsDoModal, onClose, editClick,
+  imgSrc, naverName, jobRole, birthdate, admissionDate, project, propsDoModal, onClose, editClick, trashClick,
 }) {
   return (
     <Box {...propsDoModal}>
@@ -110,6 +111,7 @@ export default function NaversDetail({
           <ButtonsWrapper>
             <Button
               type="button"
+              onClick={trashClick}
             >
               <img src="/trashIcon.png" width="14px" height="18px" alt="trashIcon" />
             </Button>

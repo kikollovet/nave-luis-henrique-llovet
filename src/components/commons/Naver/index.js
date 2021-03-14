@@ -51,7 +51,7 @@ const Button = styled.button`
 // eslint-disable-next-line react/prop-types
 export default function NavBar({
   // eslint-disable-next-line react/prop-types
-  imgSrc, naverName, jobRole, onClick, editClick,
+  imgSrc, naverName, jobRole, onClick, editClick, trashClick,
 }) {
   return (
     <NaverWrapper>
@@ -61,6 +61,7 @@ export default function NavBar({
       <ButtonsWrapper>
         <Button
           type="button"
+          onClick={trashClick}
         >
           <img src="/trashIcon.png" width="14px" height="18px" alt="trashIcon" />
         </Button>

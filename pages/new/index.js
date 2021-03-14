@@ -1,6 +1,7 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
 import React from 'react';
+import { useRouter } from 'next/router';
 import { withIronSession } from 'next-iron-session';
 // import styled from 'styled-components';
 import { Box } from '../../src/components/foundation/layout/Box';
@@ -10,6 +11,7 @@ import SuccessWindow from '../../src/components/commons/SuccessWindow';
 
 export default function Home(props) {
   const [isModalOpen, setModalState] = React.useState(false);
+  const router = useRouter();
   return (
     <Box
       display="flex"
@@ -24,6 +26,7 @@ export default function Home(props) {
         isOpen={isModalOpen}
         onClose={() => {
           setModalState(false);
+          router.push('/navers');
         }}
       >
         {(propsDoModal) => (
@@ -32,6 +35,7 @@ export default function Home(props) {
             smallText="Naver criado com sucesso!"
             onClose={() => {
               setModalState(false);
+              router.push('/navers');
             }}
             propsDoModal={propsDoModal}
           />
