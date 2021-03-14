@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable import/prefer-default-export */
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -49,11 +51,11 @@ const Button = styled.button`
 // eslint-disable-next-line react/prop-types
 export default function NavBar({
   // eslint-disable-next-line react/prop-types
-  imgSrc, naverName, jobRole, onClick,
+  imgSrc, naverName, jobRole, onClick, editClick,
 }) {
   return (
-    <NaverWrapper onClick={onClick}>
-      <img src={imgSrc} width="281px" height="280px" alt="naver" />
+    <NaverWrapper>
+      <img onClick={onClick} src={imgSrc} width="281px" height="280px" alt="naver" />
       <NaverName>{naverName}</NaverName>
       <NaverJob>{jobRole}</NaverJob>
       <ButtonsWrapper>
@@ -64,6 +66,7 @@ export default function NavBar({
         </Button>
         <Button
           type="button"
+          onClick={editClick}
         >
           <img src="/editIcon.png" width="18px" height="18px" alt="editIcon" />
         </Button>

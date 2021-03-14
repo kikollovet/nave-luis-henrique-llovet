@@ -83,7 +83,7 @@ const CloseButton = styled.button`
 // eslint-disable-next-line react/prop-types
 export default function NaversDetail({
   // eslint-disable-next-line react/prop-types
-  imgSrc, naverName, jobRole, birthdate, admissionDate, project, propsDoModal, onClose,
+  imgSrc, naverName, jobRole, birthdate, admissionDate, project, propsDoModal, onClose, editClick,
 }) {
   return (
     <Box {...propsDoModal}>
@@ -115,6 +115,7 @@ export default function NaversDetail({
             </Button>
             <Button
               type="button"
+              onClick={editClick}
             >
               <img src="/editIcon.png" width="18px" height="18px" alt="editIcon" />
             </Button>
