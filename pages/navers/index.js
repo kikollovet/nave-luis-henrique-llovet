@@ -10,9 +10,13 @@ import Naver from '../../src/components/commons/Naver';
 import NaversBar from '../../src/components/commons/NaversBar';
 import Modal from '../../src/components/commons/Modal';
 import NaversDetail from '../../src/components/commons/NaversDetail';
+import Excluir from '../../src/components/commons/Excluir';
+import SuccessWindow from '../../src/components/commons/SuccessWindow';
 
 export default function NaversPage(props) {
   const [isModalOpen, setModalState] = React.useState(false);
+  const [isModalDeleteOpen, setModalDeleteState] = React.useState(false);
+  const [isModalDeleteConfOpen, setModalDeleteConfState] = React.useState(false);
   const [dataModalDetail, setDataModalDetail] = React.useState({});
   const router = useRouter();
   return (
@@ -34,6 +38,77 @@ export default function NaversPage(props) {
       width="100%"
       height="100%"
     >
+      <Modal
+        isOpen={isModalDeleteConfOpen}
+        onClose={() => {
+          setModalDeleteConfState(false);
+          router.push('/navers');
+        }}
+      >
+        {(propsDoModal) => (
+          <SuccessWindow
+            largeText="Naver excluído"
+            smallText="Naver excluído com sucesso!"
+            onClose={() => {
+              setModalDeleteConfState(false);
+              router.push('/navers');
+            }}
+            propsDoModal={propsDoModal}
+          />
+        )}
+      </Modal>
+      <Modal
+        isOpen={isModalDeleteOpen}
+        onClose={() => {
+          setModalDeleteState(false);
+        }}
+      >
+        {(propsDoModal) => (
+          <Excluir
+            largeText="Excluir Naver"
+            smallText="Tem certeza que deseja excluir este naver?"
+            onClose={() => {
+              setModalDeleteState(false);
+            }}
+            onConfirm={() => {
+              fetch(`https://navedex-api.herokuapp.com/v1/navers/${dataModalDetail.id}`,
+                {
+                  method: 'DELETE',
+                  headers: {
+                    // Accept: '*/*',
+                    // 'Accept-Encoding': 'gzip, deflate, br',
+                    // Connection: 'keep-alive',
+                    // 'Content-Type': 'application/json',
+                    Authorization: `Bearer ${props.user.token}`,
+                    // 'Access-Control-Allow-Methods': 'DELETE',
+                  },
+                  // body: JSON.stringify(naverDTO),
+                })
+                .then((respostaDoServidor) => {
+                  if (respostaDoServidor.ok) {
+                    return respostaDoServidor.json();
+                  }
+                  console.log(respostaDoServidor);
+                  throw new Error('Não foi possível cadastrar o usuário agora :(');
+                })
+              // eslint-disable-next-line no-unused-vars
+                .then((respostaConvertidaEmObjeto) => {
+                  // success();
+                  // console.log(respostaConvertidaEmObjeto);
+                  setModalDeleteState(false);
+                  setModalDeleteConfState(true);
+                })
+              // eslint-disable-next-line no-unused-vars
+                .catch((error) => {
+                  // console.log(error);
+                  // console.log(token);
+                  // console.log(naverDTO);
+                });
+            }}
+            propsDoModal={propsDoModal}
+          />
+        )}
+      </Modal>
       <Modal
         isOpen={isModalOpen}
         onClose={() => {
@@ -79,6 +154,12 @@ export default function NaversPage(props) {
             jobRole={naver.job_role}
             editClick={() => {
               router.push(`/edit?id=${naver.id}&url=${naver.url}&name=${naver.name}&job_role=${naver.job_role}&birthdate=${naver.birthdate}&admission_date=${naver.admission_date}&project=${naver.project}`);
+            }}
+            trashClick={() => {
+              setDataModalDetail({
+                id: naver.id,
+              });
+              setModalDeleteState(true);
             }}
             onClick={() => {
               setDataModalDetail({
