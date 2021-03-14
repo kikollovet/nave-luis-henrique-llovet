@@ -43,8 +43,7 @@ export default function NaversBar() {
       <NaversButton
         type="button"
         onClick={() => {
-          fetch('/api/logout', { method: 'POST' });
-          router.push('/');
+          router.push('/new');
         }}
       >
         Adicionar Naver
