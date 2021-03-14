@@ -1,6 +1,8 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
 import React from 'react';
+import { useRouter } from 'next/router';
 import { withIronSession } from 'next-iron-session';
 import { Box } from '../../src/components/foundation/layout/Box';
 import NavBar from '../../src/components/commons/NavBar';
@@ -12,6 +14,7 @@ import NaversDetail from '../../src/components/commons/NaversDetail';
 export default function NaversPage(props) {
   const [isModalOpen, setModalState] = React.useState(false);
   const [dataModalDetail, setDataModalDetail] = React.useState({});
+  const router = useRouter();
   return (
     // <div>
     //   {props.user.id}
@@ -49,6 +52,9 @@ export default function NaversPage(props) {
             admissionDate={dataModalDetail.admissionDate}
             project={dataModalDetail.project}
             propsDoModal={propsDoModal}
+            editClick={() => {
+              router.push(`/edit?id=${dataModalDetail.id}&url=${dataModalDetail.imgSrc}&name=${dataModalDetail.naverName}&job_role=${dataModalDetail.jobRole}&birthdate=${dataModalDetail.birthdate}&admission_date=${dataModalDetail.admissionDate}&project=${dataModalDetail.project}`);
+            }}
           />
         )}
       </Modal>
@@ -71,14 +77,17 @@ export default function NaversPage(props) {
             imgSrc={naver.url}
             naverName={naver.name}
             jobRole={naver.job_role}
+            editClick={() => {
+              router.push(`/edit?id=${naver.id}&url=${naver.url}&name=${naver.name}&job_role=${naver.job_role}&birthdate=${naver.birthdate}&admission_date=${naver.admission_date}&project=${naver.project}`);
+            }}
             onClick={() => {
               setDataModalDetail({
                 id: naver.id,
                 imgSrc: naver.url,
                 naverName: naver.name,
                 jobRole: naver.job_role,
-                birthdate: naver.birthdate.split('T', 1),
-                admissionDate: naver.admission_date.split('T', 1),
+                birthdate: naver.birthdate,
+                admissionDate: naver.admission_date,
                 project: naver.project,
               });
               setModalState(!isModalOpen);
@@ -100,6 +109,13 @@ export default function NaversPage(props) {
       </Box>
     </Box>
   );
+}
+
+function formatarData(objeto, atributo) {
+  const dataMenor = objeto[atributo].split('-', 3);
+  const dia = dataMenor[2].split('T', 1);
+  const dataFormatoCerto = `${dia}/${dataMenor[1]}/${dataMenor[0]}`;
+  objeto[atributo] = dataFormatoCerto;
 }
 
 export const getServerSideProps = withIronSession(
@@ -126,6 +142,31 @@ export const getServerSideProps = withIronSession(
         return response;
       });
     }
+    // navers = navers.map((naver) => {
+    //   const birthdate = naver.birthdate.split('T', 1);
+    //   naver.birthdate = birthdate;
+    //   const navers2 = [];
+    //   navers2.push(naver);
+    //   return navers2;
+    // });
+
+    // navers.forEach((naver) => {
+    //   const birthdateMenor = naver.birthdate.split('-', 3);
+    //   const dia = birthdateMenor[2].split('T', 1);
+    //   const birthateFormatoCerto = `${dia}/${birthdateMenor[1]}/${birthdateMenor[0]}`;
+    //   naver.birthdate = birthateFormatoCerto;
+
+    //   const admissionDateMenor = naver.admission_date.split('-', 3);
+    //   const diaAdmin = admissionDateMenor[2].split('T', 1);
+    // eslint-disable-next-line max-len
+    //   const admissionDateFormatoCerto = `${diaAdmin}/${admissionDateMenor[1]}/${admissionDateMenor[0]}`;
+    //   naver.admission_date = admissionDateFormatoCerto;
+    // });
+
+    navers.forEach((naver) => {
+      formatarData(naver, 'birthdate');
+      formatarData(naver, 'admission_date');
+    });
     // const faqCategories = await fetch('https://instalura-api.vercel.app/api/content/faq').then(async (resp) => {
     //   const response = await resp.json();
     //   // ATENçâo ---- LEMBRE DE TIRAR O DATA

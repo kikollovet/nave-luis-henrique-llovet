@@ -33,15 +33,15 @@ const ButtonForm = styled(Button)`
 // eslint-disable-next-line react/prop-types
 // eslint-disable-next-line camelcase
 function FormContent({
-  token,
+  token, name, job_role, birthdate, admission_date, project, url, id
 }) {
   const [naverInfo, setNaverInfo] = React.useState({
-    name: '',
-    job_role: '',
-    birthdate: '',
-    admission_date: '',
-    project: '',
-    url: '',
+    name,
+    job_role,
+    birthdate,
+    admission_date,
+    project,
+    url,
   });
 
   // const [errorLogin, setErrorLogin] = React.useState();
@@ -69,9 +69,9 @@ function FormContent({
           birthdate: naverInfo.birthdate,
         };
 
-        fetch('https://navedex-api.herokuapp.com/v1/navers',
+        fetch(`https://navedex-api.herokuapp.com/v1/navers/${id}`,
           {
-            method: 'POST',
+            method: 'PUT',
             headers: {
               // Accept: '*/*',
               // 'Accept-Encoding': 'gzip, deflate, br',
@@ -180,8 +180,8 @@ function FormContent({
 }
 
 // eslint-disable-next-line react/prop-types
-export default function FormNaver({
-  token,
+export default function FormEditNaver({
+  token, name, job_role, birthdate, admission_date, project, url, id
 }) {
   return (
     <Box
@@ -200,16 +200,53 @@ export default function FormNaver({
     >
       <FormContent
         token={token}
+        name={name}
+        job_role={job_role}
+        birthdate={birthdate}
+        admission_date={admission_date}
+        project={project}
+        url={url}
+        id={id}
         style={{ width: '100%', height: '100%' }}
       />
     </Box>
   );
 }
 
-FormContent.propTypes = {
-  token: PropTypes.string.isRequired,
+FormContent.defaultProps = {
+  name: '',
+  job_role: '',
+  birthdate: '',
+  admission_date: '',
+  project: '',
+  url: '',
 };
 
-FormNaver.propTypes = {
+FormContent.propTypes = {
   token: PropTypes.string.isRequired,
+  name: PropTypes.string,
+  job_role: PropTypes.string,
+  birthdate: PropTypes.string,
+  admission_date: PropTypes.string,
+  project: PropTypes.string,
+  url: PropTypes.string,
+};
+
+FormEditNaver.defaultProps = {
+  name: '',
+  job_role: '',
+  birthdate: '',
+  admission_date: '',
+  project: '',
+  url: '',
+};
+
+FormEditNaver.propTypes = {
+  token: PropTypes.string.isRequired,
+  name: PropTypes.string,
+  job_role: PropTypes.string,
+  birthdate: PropTypes.string,
+  admission_date: PropTypes.string,
+  project: PropTypes.string,
+  url: PropTypes.string,
 };
