@@ -54,6 +54,7 @@ const NaverInfo = styled.span`
 
 const ButtonsWrapper = styled.div`
   margin-top: 12px;
+  margin-bottom: 20px;
 `;
 
 const Button = styled.button`
