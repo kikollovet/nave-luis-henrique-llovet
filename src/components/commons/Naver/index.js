@@ -20,6 +20,7 @@ const NaverName = styled.span`
   font-size: 16px;
   line-height: 18px;
   margin-top: 20px;
+  margin-bottom: 5px;
 `;
 
 const NaverJob = styled.span`
@@ -37,6 +38,14 @@ const Button = styled.button`
   border: 0px;
   background-color: white;
   outline: none;
+  cursor: pointer;
+`;
+
+const Clicavel = styled.div`
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 `;
 
 // eslint-disable-next-line react/prop-types
@@ -46,9 +55,11 @@ export default function Naver({
 }) {
   return (
     <NaverWrapper>
-      <img onClick={onClick} src={imgSrc} width="281px" height="280px" alt="naver" />
-      <NaverName>{naverName}</NaverName>
-      <NaverJob>{jobRole}</NaverJob>
+      <Clicavel onClick={onClick}>
+        <img src={imgSrc} width="281px" height="280px" alt="naver" />
+        <NaverName>{naverName}</NaverName>
+        <NaverJob>{jobRole}</NaverJob>
+      </Clicavel>
       <ButtonsWrapper>
         <Button
           type="button"

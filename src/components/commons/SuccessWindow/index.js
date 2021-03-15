@@ -38,6 +38,7 @@ const CloseButton = styled.button`
   outline: none;
   align-self: flex-end;
   padding: 10px;
+  cursor: pointer;
 `;
 
 export default function SuccessWindow({

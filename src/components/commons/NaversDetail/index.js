@@ -60,6 +60,7 @@ const Button = styled.button`
   border: 0px;
   background-color: white;
   outline: none;
+  cursor: pointer;
 `;
 
 const CloseButton = styled.button`
@@ -68,6 +69,7 @@ const CloseButton = styled.button`
   outline: none;
   align-self: flex-end;
   padding: 10px;
+  cursor: pointer;
 `;
 
 // eslint-disable-next-line react/prop-types
