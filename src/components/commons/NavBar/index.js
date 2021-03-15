@@ -19,6 +19,7 @@ const SairButton = styled.button`
   border: 0px;
   background-color: white;
   outline: none;
+  cursor: pointer;
 `;
 
 export default function NavBar() {
