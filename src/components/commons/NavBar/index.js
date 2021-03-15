@@ -28,10 +28,11 @@ export default function NavBar() {
     <NavBarWrapper>
       <img src="/logo.png" width="145px" height="37px" alt="logo" />
       <SairButton
-        type="submit"
+        type="button"
         onClick={() => {
-          fetch('/api/logout', { method: 'POST' });
-          router.push('/');
+          fetch('/api/logout', { method: 'POST' }).then(() => {
+            router.push('/navers');
+          });
         }}
       >
         Sair
