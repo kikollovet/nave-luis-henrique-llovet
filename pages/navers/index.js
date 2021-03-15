@@ -20,15 +20,7 @@ export default function NaversPage(props) {
   const [dataModalDetail, setDataModalDetail] = React.useState({});
   const router = useRouter();
   return (
-    // <div>
-    //   {props.user.id}
-    //   {props.user.email}
-    //   {props.user.token}
-    //   {' '}
-    //   {props.navers[0].name}
-    //   {' '}
-    //   {props.navers[1].name}
-    // </div>
+
     <Box
       display="flex"
       flexDirection="column"
@@ -75,14 +67,8 @@ export default function NaversPage(props) {
                 {
                   method: 'DELETE',
                   headers: {
-                    // Accept: '*/*',
-                    // 'Accept-Encoding': 'gzip, deflate, br',
-                    // Connection: 'keep-alive',
-                    // 'Content-Type': 'application/json',
                     Authorization: `Bearer ${props.user.token}`,
-                    // 'Access-Control-Allow-Methods': 'DELETE',
                   },
-                  // body: JSON.stringify(naverDTO),
                 })
                 .then((respostaDoServidor) => {
                   if (respostaDoServidor.ok) {
@@ -92,16 +78,12 @@ export default function NaversPage(props) {
                 })
               // eslint-disable-next-line no-unused-vars
                 .then((respostaConvertidaEmObjeto) => {
-                  // success();
-                  // console.log(respostaConvertidaEmObjeto);
                   setModalDeleteState(false);
                   setModalDeleteConfState(true);
                 })
-              // eslint-disable-next-line no-unused-vars
+                // eslint-disable-next-line no-unused-vars
                 .catch((error) => {
-                  // console.log(error);
-                  // console.log(token);
-                  // console.log(naverDTO);
+
                 });
             }}
             propsDoModal={propsDoModal}
@@ -179,17 +161,7 @@ export default function NaversPage(props) {
           />
         ))}
         ,
-        {/* {props.navers && props.navers.map((naver) => (
-          <NaversDetail
-            imgSrc={naver.url}
-            naverName={naver.name}
-            jobRole={naver.job_role}
-            birthdate={naver.birthdate}
-            admissionDate={naver.admission_date}
-            project={naver.project}
-          />
-        ))}
-        , */}
+
       </Box>
     </Box>
   );
@@ -212,17 +184,11 @@ export const getServerSideProps = withIronSession(
         {
           method: 'GET',
           headers: {
-          // 'User-Agent': 'PostmanRuntime/7.26.10',
-          // Accept: '*/*',
-          // 'Accept-Encoding': 'gzip, deflate, br',
-          // Connection: 'keep-alive',
             Authorization: `Bearer ${user.token}`,
           },
           // eslint-disable-next-line arrow-body-style
         }).then(async (resp) => {
         const response = await resp.json();
-        // ATENçâo ---- LEMBRE DE TIRAR O DATA
-        // console.log(response);
         return response;
       });
     }
@@ -235,38 +201,11 @@ export const getServerSideProps = withIronSession(
         },
       };
     }
-    // navers = navers.map((naver) => {
-    //   const birthdate = naver.birthdate.split('T', 1);
-    //   naver.birthdate = birthdate;
-    //   const navers2 = [];
-    //   navers2.push(naver);
-    //   return navers2;
-    // });
-
-    // navers.forEach((naver) => {
-    //   const birthdateMenor = naver.birthdate.split('-', 3);
-    //   const dia = birthdateMenor[2].split('T', 1);
-    //   const birthateFormatoCerto = `${dia}/${birthdateMenor[1]}/${birthdateMenor[0]}`;
-    //   naver.birthdate = birthateFormatoCerto;
-
-    //   const admissionDateMenor = naver.admission_date.split('-', 3);
-    //   const diaAdmin = admissionDateMenor[2].split('T', 1);
-    // eslint-disable-next-line max-len
-    //   const admissionDateFormatoCerto = `${diaAdmin}/${admissionDateMenor[1]}/${admissionDateMenor[0]}`;
-    //   naver.admission_date = admissionDateFormatoCerto;
-    // });
 
     navers.forEach((naver) => {
       formatarData(naver, 'birthdate');
       formatarData(naver, 'admission_date');
     });
-    // const faqCategories = await fetch('https://instalura-api.vercel.app/api/content/faq').then(async (resp) => {
-    //   const response = await resp.json();
-    //   // ATENçâo ---- LEMBRE DE TIRAR O DATA
-    //   return response.data;
-    // });
-    // eslint-disable-next-line no-console
-    // console.log(user);
 
     return {
       props: { user, navers },
