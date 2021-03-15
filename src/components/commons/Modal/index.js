@@ -5,7 +5,6 @@ import styled, { createGlobalStyle, css } from 'styled-components';
 const ModalWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  /* align-items: stretch; */
   justify-content: center;
   align-items: center;
   background: rgba(0,0,0,0.6);

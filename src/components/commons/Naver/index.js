@@ -14,15 +14,6 @@ const NaverWrapper = styled.div`
   margin: 20px;
 `;
 
-// const SairButton = styled.button`
-//   font-style: normal;
-//   font-weight: 600;
-//   font-size: 14px;
-//   line-height: 24px;
-//   border: none;
-//   background-color: white;
-// `;
-
 const NaverName = styled.span`
   font-style: normal;
   font-weight: 600;
@@ -49,7 +40,7 @@ const Button = styled.button`
 `;
 
 // eslint-disable-next-line react/prop-types
-export default function NavBar({
+export default function Naver({
   // eslint-disable-next-line react/prop-types
   imgSrc, naverName, jobRole, onClick, editClick, trashClick,
 }) {
@@ -76,7 +67,7 @@ export default function NavBar({
   );
 }
 
-NavBar.propTypes = {
+Naver.propTypes = {
   imgSrc: PropTypes.string.isRequired,
   naverName: PropTypes.string.isRequired,
   jobRole: PropTypes.string.isRequired,

@@ -12,7 +12,6 @@ const NaverWrapper = styled.div`
   justify-content: flex-start;
   width: 1006px;
   height: 503px;
-  /* margin: 20px; */
 `;
 
 const NaverData = styled.div`
@@ -25,21 +24,11 @@ const NaverData = styled.div`
   padding-left: 25px;
 `;
 
-// const SairButton = styled.button`
-//   font-style: normal;
-//   font-weight: 600;
-//   font-size: 14px;
-//   line-height: 24px;
-//   border: none;
-//   background-color: white;
-// `;
-
 const NaverName = styled.span`
   font-style: normal;
   font-weight: 600;
   font-size: 24px;
   line-height: 36px;
-  /* margin-top: 20px; */
 `;
 
 const NaverJob = styled.span`
@@ -128,11 +117,20 @@ export default function NaversDetail({
   );
 }
 
+NaversDetail.defaultProps = {
+  imgSrc: '',
+  naverName: '',
+  jobRole: '',
+  birthdate: '',
+  admissionDate: '',
+  project: '',
+};
+
 NaversDetail.propTypes = {
-  imgSrc: PropTypes.string.isRequired,
-  naverName: PropTypes.string.isRequired,
-  jobRole: PropTypes.string.isRequired,
-  birthdate: PropTypes.string.isRequired,
-  admissionDate: PropTypes.string.isRequired,
-  project: PropTypes.string.isRequired,
+  imgSrc: PropTypes.string,
+  naverName: PropTypes.string,
+  jobRole: PropTypes.string,
+  birthdate: PropTypes.string,
+  admissionDate: PropTypes.string,
+  project: PropTypes.string,
 };
