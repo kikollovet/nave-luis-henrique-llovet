@@ -38,7 +38,6 @@ function FormContent() {
       <Form
         onSubmit={(event) => {
           event.preventDefault();
-          // Data Transfer Object
           setProcessingLogin('Processing.......');
           const userDTO = {
             email: userInfo.email,
@@ -53,7 +52,6 @@ function FormContent() {
                 'Accept-Encoding': 'gzip, deflate, br',
                 Connection: 'keep-alive',
                 'Content-Type': 'application/json',
-                // Authorization: 'Bearer 12345',
               },
               body: JSON.stringify(userDTO),
             })
@@ -62,10 +60,9 @@ function FormContent() {
                 return respostaDoServidor.json();
               }
 
-              throw new Error('Não foi possível cadastrar o usuário agora :(');
+              throw new Error('Não foi possível logar o usuário agora :(');
             })
             .then((respostaConvertidaEmObjeto) => {
-              // console.log(respostaConvertidaEmObjeto);
               fetch('/api/login',
                 {
                   method: 'POST',
@@ -121,7 +118,6 @@ export default function FormLogin() {
     <Box
       display="flex"
       flexDirection="column"
-      // justifyContent="a"
       alignItems="flex-start"
       alignSelf="center"
       backgroundColor="white"

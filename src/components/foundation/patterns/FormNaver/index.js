@@ -2,7 +2,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-// import { useRouter } from 'next/router';
 import { Box } from '../../layout/Box';
 import { Button } from '../../../commons/Button';
 import InputGroup from '../../../commons/InputGroup';
@@ -46,8 +45,6 @@ function FormContent({
   });
   const [processando, setProcessando] = React.useState('');
   const [erro, setErro] = React.useState('');
-  // const [errorLogin, setErrorLogin] = React.useState();
-  // const [processingLogin, setProcessingLogin] = React.useState();
 
   function handleChange(event) {
     const fieldName = event.target.getAttribute('name');
@@ -60,8 +57,6 @@ function FormContent({
     <form
       onSubmit={(event) => {
         event.preventDefault();
-        // Data Transfer Object
-        // setProcessingLogin('Processing.......');
         setErro('');
         setProcessando('Processando.......');
         const naverDTO = {
@@ -77,9 +72,6 @@ function FormContent({
           {
             method: 'POST',
             headers: {
-              // Accept: '*/*',
-              // 'Accept-Encoding': 'gzip, deflate, br',
-              // Connection: 'keep-alive',
               'Content-Type': 'application/json',
               Authorization: `Bearer ${token}`,
             },
@@ -95,15 +87,11 @@ function FormContent({
           // eslint-disable-next-line no-unused-vars
           .then((respostaConvertidaEmObjeto) => {
             success();
-            // console.log(respostaConvertidaEmObjeto);
           })
           // eslint-disable-next-line no-unused-vars
           .catch((error) => {
             setProcessando('');
             setErro('Algo deu errado');
-            // console.log(error);
-            // console.log(token);
-            // console.log(naverDTO);
           });
       }}
     >
@@ -218,7 +206,7 @@ const Text = styled.span`
   line-height: 36px;
   margin-left: 20px;
 `;
-// eslint-disable-next-line react/prop-types
+
 export default function FormNaver({
   token, success,
 }) {
@@ -228,7 +216,6 @@ export default function FormNaver({
       <Box
         display="flex"
         flexDirection="column"
-      // justifyContent="a"
         alignItems="flex-start"
         alignSelf="center"
         backgroundColor="white"

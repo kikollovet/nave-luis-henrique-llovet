@@ -117,11 +117,20 @@ export default function NaversDetail({
   );
 }
 
+NaversDetail.defaultProps = {
+  imgSrc: '',
+  naverName: '',
+  jobRole: '',
+  birthdate: '',
+  admissionDate: '',
+  project: '',
+};
+
 NaversDetail.propTypes = {
-  imgSrc: PropTypes.string.isRequired,
-  naverName: PropTypes.string.isRequired,
-  jobRole: PropTypes.string.isRequired,
-  birthdate: PropTypes.string.isRequired,
-  admissionDate: PropTypes.string.isRequired,
-  project: PropTypes.string.isRequired,
+  imgSrc: PropTypes.string,
+  naverName: PropTypes.string,
+  jobRole: PropTypes.string,
+  birthdate: PropTypes.string,
+  admissionDate: PropTypes.string,
+  project: PropTypes.string,
 };

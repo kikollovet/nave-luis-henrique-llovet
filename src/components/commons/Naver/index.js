@@ -40,7 +40,7 @@ const Button = styled.button`
 `;
 
 // eslint-disable-next-line react/prop-types
-export default function NavBar({
+export default function Naver({
   // eslint-disable-next-line react/prop-types
   imgSrc, naverName, jobRole, onClick, editClick, trashClick,
 }) {
@@ -67,7 +67,7 @@ export default function NavBar({
   );
 }
 
-NavBar.propTypes = {
+Naver.propTypes = {
   imgSrc: PropTypes.string.isRequired,
   naverName: PropTypes.string.isRequired,
   jobRole: PropTypes.string.isRequired,
