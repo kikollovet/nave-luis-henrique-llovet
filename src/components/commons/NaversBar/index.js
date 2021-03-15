@@ -9,18 +9,7 @@ const NaversBarWrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
-  /* padding: 30px; */
 `;
-
-// const SairButton = styled.button`
-//   font-style: normal;
-//   font-weight: 600;
-//   font-size: 14px;
-//   line-height: 24px;
-//   border: 0px;
-//   background-color: white;
-//   outline: none;
-// `;
 
 const NaversText = styled.span`
   font-style: normal;
