@@ -6,6 +6,7 @@ import { Box } from '../../layout/Box';
 import { Button } from '../../../commons/Button';
 import InputGroup from '../../../commons/InputGroup';
 import NavBar from '../../../commons/NavBar';
+import { TextStyleVariantsMap } from '../../Text';
 
 const InputGroup2 = styled.div`
   display: flex;
@@ -200,10 +201,7 @@ const BackButton = styled.a`
 `;
 
 const Text = styled.span`
-  font-style: normal;
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 36px;
+  ${TextStyleVariantsMap.formTitle}
   margin-left: 20px;
 `;
 

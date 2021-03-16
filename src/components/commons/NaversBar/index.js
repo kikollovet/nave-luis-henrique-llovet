@@ -3,6 +3,7 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import { Button } from '../Button';
+import { TextStyleVariantsMap } from '../../foundation/Text';
 
 const NaversBarWrapper = styled.div`
   display: flex;
@@ -12,10 +13,7 @@ const NaversBarWrapper = styled.div`
 `;
 
 const NaversText = styled.span`
-  font-style: normal;
-  font-weight: 600;
-  font-size: 40px;
-  line-height: 48px;
+  ${TextStyleVariantsMap.navBarTitle}
   margin: 30px;
 `;
 

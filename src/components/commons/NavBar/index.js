@@ -2,6 +2,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
+import { TextStyleVariantsMap } from '../../foundation/Text';
 
 const NavBarWrapper = styled.div`
   display: flex;
@@ -12,10 +13,7 @@ const NavBarWrapper = styled.div`
 `;
 
 const SairButton = styled.button`
-  font-style: normal;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 24px;
+  ${TextStyleVariantsMap.button}
   border: 0px;
   background-color: ${({ theme }) => theme.colors.main};
   outline: none;

@@ -4,6 +4,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { TextStyleVariantsMap } from '../../foundation/Text';
 
 const NaverWrapper = styled.div`
   display: flex;
@@ -15,19 +16,13 @@ const NaverWrapper = styled.div`
 `;
 
 const NaverName = styled.span`
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 18px;
+  ${TextStyleVariantsMap.titleCard}
   margin-top: 20px;
   margin-bottom: 5px;
 `;
 
 const NaverJob = styled.span`
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 24px;
+  ${TextStyleVariantsMap.subTitleCard}
 `;
 
 const ButtonsWrapper = styled.div`

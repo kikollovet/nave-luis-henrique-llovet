@@ -5,6 +5,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Box } from '../../foundation/layout/Box';
+import { TextStyleVariantsMap } from '../../foundation/Text';
 
 const NaverWrapper = styled.div`
   display: flex;
@@ -25,31 +26,19 @@ const NaverData = styled.div`
 `;
 
 const NaverName = styled.span`
-  font-style: normal;
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 36px;
+  ${TextStyleVariantsMap.titleDetailCard}
 `;
 
 const NaverJob = styled.span`
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 24px;
+  ${TextStyleVariantsMap.subTitleDetailCard}
 `;
 
 const NaverInfoTitle = styled.span`
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 24px;
+  ${TextStyleVariantsMap.naverInfoTitleDetailCard}
 `;
 
 const NaverInfo = styled.span`
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 24px;
+  ${TextStyleVariantsMap.naverInfoDetailCard}
 `;
 
 const ButtonsWrapper = styled.div`
