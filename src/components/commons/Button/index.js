@@ -1,13 +1,11 @@
 /* eslint-disable import/prefer-default-export */
 import styled from 'styled-components';
+import { TextStyleVariantsMap } from '../../foundation/Text';
 
 export const Button = styled.button`
-  background-color: #212121;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 24px;
-  color: #FFFFFF;
+  background-color: ${({ theme }) => theme.colors.secondary};
+  ${TextStyleVariantsMap.button}
+  color: ${({ theme }) => theme.colors.main};
   height: 40px;
   border: 0px;
   cursor: pointer;

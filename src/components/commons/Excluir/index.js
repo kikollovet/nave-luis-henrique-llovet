@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Box } from '../../foundation/layout/Box';
 import { Button } from '../Button';
+import { TextStyleVariantsMap } from '../../foundation/Text';
 
 const WrapperDeleteWindow = styled.div`
   width: 592px;
@@ -12,30 +13,24 @@ const WrapperDeleteWindow = styled.div`
   flex-direction: column;
   justify-content: space-around;
   align-items: flex-start;
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.main};
 `;
 
 const LargeText = styled.span`
-  font-style: normal;
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 36px;
+  ${TextStyleVariantsMap.modalTitle}
   margin-left: 32px;
 `;
 
 const SmallText = styled.span`
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 36px;
+  ${TextStyleVariantsMap.modalsubTitle}
   margin-bottom: 20px;
   margin-left: 32px;
 `;
 
 const CancelButton = styled(Button)`
-  color: black;
+  color: ${({ theme }) => theme.colors.secondary};
   background-color: white;
-  border: 1px solid #212121;
+  border: 1px solid ${({ theme }) => theme.colors.secondary};
   width: 176px;
   height: 40px;
   margin-right: 24px;
