@@ -36,7 +36,7 @@ const ButtonsWrapper = styled.div`
 
 const Button = styled.button`
   border: 0px;
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.main};
   outline: none;
   cursor: pointer;
 `;

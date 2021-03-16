@@ -9,7 +9,7 @@ font-weight: normal;
 font-size: 16px;
 line-height: 24px;
 &:-webkit-autofill{
-  box-shadow: 0 0 0 30px white;
-  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  box-shadow: 0 0 0 30px ${({ theme }) => theme.colors.main};
+  -webkit-box-shadow: 0 0 0 30px ${({ theme }) => theme.colors.main} inset !important;
 }
 `;

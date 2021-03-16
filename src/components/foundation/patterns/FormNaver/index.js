@@ -193,7 +193,7 @@ const WrapperTitle = styled.div`
 
 const BackButton = styled.a`
   border: 0px;
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.main};
   outline: none;
   align-self: flex-end;
   padding: 10px;

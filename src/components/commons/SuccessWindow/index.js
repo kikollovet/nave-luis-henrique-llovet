@@ -12,7 +12,7 @@ const WrapperSuccessWindow = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.main};
 `;
 
 const LargeText = styled.span`
@@ -34,7 +34,7 @@ const SmallText = styled.span`
 
 const CloseButton = styled.button`
   border: 0px;
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.main};
   outline: none;
   align-self: flex-end;
   padding: 10px;

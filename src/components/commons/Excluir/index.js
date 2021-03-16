@@ -12,7 +12,7 @@ const WrapperDeleteWindow = styled.div`
   flex-direction: column;
   justify-content: space-around;
   align-items: flex-start;
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.main};
 `;
 
 const LargeText = styled.span`
@@ -33,9 +33,9 @@ const SmallText = styled.span`
 `;
 
 const CancelButton = styled(Button)`
-  color: black;
+  color: ${({ theme }) => theme.colors.secondary};
   background-color: white;
-  border: 1px solid #212121;
+  border: 1px solid ${({ theme }) => theme.colors.secondary};
   width: 176px;
   height: 40px;
   margin-right: 24px;
