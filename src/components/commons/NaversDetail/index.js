@@ -3,64 +3,10 @@
 /* eslint-disable import/prefer-default-export */
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import { Box } from '../../foundation/layout/Box';
-import { TextStyleVariantsMap } from '../../foundation/Text';
-
-const NaverWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  width: 1006px;
-  height: 503px;
-`;
-
-const NaverData = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 503px;
-  height: 503px;
-  background-color: ${({ theme }) => theme.colors.main};
-  padding-left: 25px;
-`;
-
-const NaverName = styled.span`
-  ${TextStyleVariantsMap.titleDetailCard}
-`;
-
-const NaverJob = styled.span`
-  ${TextStyleVariantsMap.subTitleDetailCard}
-`;
-
-const NaverInfoTitle = styled.span`
-  ${TextStyleVariantsMap.naverInfoTitleDetailCard}
-`;
-
-const NaverInfo = styled.span`
-  ${TextStyleVariantsMap.naverInfoDetailCard}
-`;
-
-const ButtonsWrapper = styled.div`
-  margin-top: 12px;
-  margin-bottom: 20px;
-`;
-
-const Button = styled.button`
-  border: 0px;
-  background-color: ${({ theme }) => theme.colors.main};
-  outline: none;
-  cursor: pointer;
-`;
-
-const CloseButton = styled.button`
-  border: 0px;
-  background-color: ${({ theme }) => theme.colors.main};
-  outline: none;
-  align-self: flex-end;
-  padding: 10px;
-  cursor: pointer;
-`;
+import {
+  NaverWrapper, NaverData, NaverName, NaverJob, NaverInfoTitle, NaverInfo, ButtonsWrapper, Button, CloseButton,
+} from './styles';
 
 // eslint-disable-next-line react/prop-types
 export default function NaversDetail({

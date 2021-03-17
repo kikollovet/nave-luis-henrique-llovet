@@ -3,45 +3,9 @@
 /* eslint-disable import/prefer-default-export */
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { TextStyleVariantsMap } from '../../foundation/Text';
-
-const NaverWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  width: 281px;
-  height: 420px;
-  margin: 20px;
-`;
-
-const NaverName = styled.span`
-  ${TextStyleVariantsMap.titleCard}
-  margin-top: 20px;
-  margin-bottom: 5px;
-`;
-
-const NaverJob = styled.span`
-  ${TextStyleVariantsMap.subTitleCard}
-`;
-
-const ButtonsWrapper = styled.div`
-  margin-top: 12px;
-`;
-
-const Button = styled.button`
-  border: 0px;
-  background-color: ${({ theme }) => theme.colors.main};
-  outline: none;
-  cursor: pointer;
-`;
-
-const Clicavel = styled.div`
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-`;
+import {
+  NaverWrapper, NaverName, NaverJob, ButtonsWrapper, Button, Clicavel,
+} from './styles';
 
 // eslint-disable-next-line react/prop-types
 export default function Naver({

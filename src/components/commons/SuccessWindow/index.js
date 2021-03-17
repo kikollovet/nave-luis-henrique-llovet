@@ -2,39 +2,10 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import { Box } from '../../foundation/layout/Box';
-import { TextStyleVariantsMap } from '../../foundation/Text';
-
-const WrapperSuccessWindow = styled.div`
-  width: 592px;
-  height: 160px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  background-color: ${({ theme }) => theme.colors.main};
-`;
-
-const LargeText = styled.span`
-  ${TextStyleVariantsMap.modalTitle}
-  margin-left: 32px;
-`;
-
-const SmallText = styled.span`
-  ${TextStyleVariantsMap.modalsubTitle}
-  margin-bottom: 20px;
-  margin-left: 32px;
-`;
-
-const CloseButton = styled.button`
-  border: 0px;
-  background-color: ${({ theme }) => theme.colors.main};
-  outline: none;
-  align-self: flex-end;
-  padding: 10px;
-  cursor: pointer;
-`;
+import {
+  WrapperSuccessWindow, LargeText, SmallText, CloseButton,
+} from './styles';
 
 export default function SuccessWindow({
   propsDoModal, largeText, smallText, onClose,

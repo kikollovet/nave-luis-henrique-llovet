@@ -1,35 +1,19 @@
 /* eslint-disable camelcase */
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import { Box } from '../../layout/Box';
-import { Button } from '../../../commons/Button';
 import InputGroup from '../../../commons/InputGroup';
 import NavBar from '../../../commons/NavBar';
-import { TextStyleVariantsMap } from '../../Text';
-
-const InputGroup2 = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 600px;
-  margin-bottom: 20px;
-`;
-
-const ButtonWrap = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-`;
-
-const StyledInputGroup = styled.div`
-  margin: 10px;
-`;
-
-const ButtonForm = styled(Button)`
-  margin: 10px;
-  width: 176px;
-`;
+import {
+  InputGroup2,
+  ButtonWrap,
+  StyledInputGroup,
+  ButtonForm,
+  Wrapper,
+  WrapperTitle,
+  BackButton,
+  Text,
+} from './styles';
 
 // eslint-disable-next-line react/prop-types
 // eslint-disable-next-line camelcase
@@ -176,34 +160,6 @@ function FormContent({
     </form>
   );
 }
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  width: 100%;
-  height: 100%;
-`;
-
-const WrapperTitle = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-`;
-
-const BackButton = styled.a`
-  border: 0px;
-  background-color: ${({ theme }) => theme.colors.main};
-  outline: none;
-  align-self: flex-end;
-  padding: 10px;
-`;
-
-const Text = styled.span`
-  ${TextStyleVariantsMap.formTitle}
-  margin-left: 20px;
-`;
 
 export default function FormNaver({
   token, success,
