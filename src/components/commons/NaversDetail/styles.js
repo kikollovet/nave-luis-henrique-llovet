@@ -7,6 +7,7 @@ export const NaverWrapper = styled.div`
   justify-content: flex-start;
   width: 1006px;
   height: 503px;
+  background-color: ${({ theme }) => theme.colors.secondary};
 `;
 
 export const NaverData = styled.div`
