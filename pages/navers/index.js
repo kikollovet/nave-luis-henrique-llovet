@@ -167,11 +167,11 @@ export default function NaversPage(props) {
   );
 }
 
-function formatarData(objeto, atributo) {
-  const dataMenor = objeto[atributo].split('-', 3);
+function formatarData(naverObject, atributoData) {
+  const dataMenor = naverObject[atributoData].split('-', 3);
   const dia = dataMenor[2].split('T', 1);
   const dataFormatoCerto = `${dia}/${dataMenor[1]}/${dataMenor[0]}`;
-  objeto[atributo] = dataFormatoCerto;
+  naverObject[atributoData] = dataFormatoCerto;
 }
 
 export const getServerSideProps = withIronSession(
